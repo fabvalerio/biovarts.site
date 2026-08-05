@@ -24,7 +24,7 @@
   --gradient-ink: linear-gradient(
     155deg,
     oklch(20.5% 0.031 258) 0%,
-    oklch(27.8% 0.04 252) 60%,
+    #a7bac9 60%,
     oklch(33% 0.045 248) 100%
   );
   --gradient-steel: linear-gradient(
@@ -429,7 +429,7 @@ img {
 }
 
 .hero-banner__proof-stat span {
-  font-size: 0.72rem;
+  font-size: 1rem;
   color: var(--muted-foreground);
 }
 
