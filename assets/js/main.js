@@ -22,7 +22,8 @@
   }
 
   const headerEl = document.getElementById("site-header");
-  if (headerEl) {
+  const isHome = active === "home";
+  if (headerEl && !isHome) {
     headerEl.innerHTML = `
       <header class="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
         <div class="mx-auto flex h-18 max-w-[1240px] items-center justify-between px-5 py-4 md:px-8">

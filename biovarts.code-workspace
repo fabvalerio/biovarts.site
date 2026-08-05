@@ -1,0 +1,9 @@
+{
+	"folders": [
+		{
+			"uri": "vscode-remote://wsl+ubuntu/home/bovolato/jobs/biovarts.site"
+		}
+	],
+	"remoteAuthority": "wsl+Ubuntu",
+	"settings": {}
+}

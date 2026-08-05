@@ -20,38 +20,82 @@
   <div id="site-header"></div>
 
   <main>
-    <section class="ink-panel relative overflow-hidden">
-      <div class="grid-etch absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto grid max-w-[1240px] items-center gap-14 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1.05fr_1fr]">
-        <div>
-          <p class="eyebrow text-primary-foreground/50">Base tecnológica · Ouro Verde do Oeste — PR</p>
-          <h1 class="mt-6 text-[2.75rem] font-semibold leading-[1.02] text-primary-foreground md:text-[4.2rem]">
-            Pellets farmacêuticos com tecnologia
-            <span class="block text-primary-foreground/55">desenvolvida no Brasil.</span>
-          </h1>
-          <p class="mt-7 max-w-xl text-base leading-relaxed text-primary-foreground/65 md:text-lg">
-            A Biovarts desenvolve tecnologias próprias para produção de pellets inertes de celulose microcristalina e sistemas multiparticulados — com elevada produtividade, controle granulométrico e alta capacidade de incorporação de ativos.
-          </p>
-          <div class="mt-10 flex flex-wrap items-center gap-3">
-            <a href="contato.html" class="inline-flex items-center gap-2 rounded-full bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90">
-              Solicitar amostra técnica
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            </a>
-            <a href="produtos.html" class="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">Ver produtos</a>
+    <section class="hero-banner" aria-label="Banner principal">
+      <div class="hero-window">
+        <div class="hero-window__media" aria-hidden="true">
+          <img src="assets/images/hero-pellets-BYEi2C_F.jpg" alt="" width="1600" height="1200" />
+          <div class="hero-window__shade"></div>
+        </div>
+
+        <a href="index.html" class="hero-banner__logo" aria-label="Biovarts — início">
+          <span class="inline-flex items-center gap-2.5">
+            <svg viewBox="0 0 48 48" class="h-8 w-8 shrink-0" aria-hidden="true" fill="none">
+              <path d="M24 3 45 24 24 45 3 24 24 3Z" stroke="currentColor" stroke-width="2.4" opacity="0.85"></path>
+              <path d="M17 33c6-3 6.5-7 4-11.5S17.5 14 20 11" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"></path>
+              <path d="M27 37c7-4 7.5-9 4.5-14.5S27.5 13 31 9" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" opacity="0.6"></path>
+            </svg>
+            <span class="font-display text-[1.35rem] font-semibold tracking-tight">Biovarts</span>
+          </span>
+          <span class="hero-curve hero-curve--right" aria-hidden="true"><span class="hero-curve__shape hero-curve__shape--tl"></span></span>
+          <span class="hero-curve hero-curve--bottom" aria-hidden="true"><span class="hero-curve__shape hero-curve__shape--tl"></span></span>
+        </a>
+
+        <div class="hero-banner__nav">
+          <nav class="hero-banner__nav-links" aria-label="Principal">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="pesquisa-desenvolvimento.html">P&amp;D</a>
+            <a href="blog.html">Blog</a>
+          </nav>
+          <a href="contato.html" class="hero-banner__nav-cta">Contato</a>
+          <button type="button" id="menu-toggle" class="hero-banner__menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
+              <path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path>
+            </svg>
+          </button>
+          <div id="mobile-menu" class="hero-banner__mobile" role="navigation" aria-label="Mobile">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="pesquisa-desenvolvimento.html">P&amp;D</a>
+            <a href="blog.html">Blog</a>
+            <a href="contato.html">Contato</a>
           </div>
         </div>
-        <div class="relative">
-          <img src="assets/images/hero-pellets-BYEi2C_F.jpg" alt="Macrofotografia de pellets esféricos de celulose microcristalina" width="1600" height="1200" class="aspect-[5/4] w-full rounded-3xl object-cover shadow-[var(--shadow-raised)]" />
-          <dl class="absolute -bottom-6 left-6 z-10 hidden gap-8 rounded-2xl bg-surface px-7 py-5 sm:flex shadow-[var(--shadow-card)]">
-            <div>
-              <dt class="eyebrow">Granulometria</dt>
-              <dd class="mt-1 font-display text-xl font-semibold">200–1400 µm</dd>
-            </div>
-            <div>
-              <dt class="eyebrow">Esfericidade</dt>
-              <dd class="mt-1 font-display text-xl font-semibold">&gt; 0,90</dd>
-            </div>
-          </dl>
+
+        <div class="hero-banner__body">
+          <h1 class="hero-banner__title">Pellets farmacêuticos</h1>
+          <p class="hero-banner__lead">
+            Tecnologia própria para núcleos de MCC e sistemas multiparticulados — produtividade, controle granulométrico e alta capacidade de incorporação de ativos.
+          </p>
+          <a href="contato.html" class="hero-banner__cta">
+            <span class="hero-banner__cta-dot" aria-hidden="true"></span>
+            Solicitar amostra
+          </a>
+        </div>
+
+        <a href="#diferencial" class="hero-banner__scroll">
+          scroll down
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"></path>
+            <path d="m6 15 6 6 6-6"></path>
+          </svg>
+        </a>
+
+        <div class="hero-banner__proof">
+          <div class="hero-banner__avatars" aria-hidden="true">
+            <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="" width="64" height="64" />
+            <img src="assets/images/lab-hands-BRNwXx_P.jpg" alt="" width="64" height="64" />
+            <img src="assets/images/product-pellets-jar-3O0Hgq2O.jpg" alt="" width="64" height="64" />
+            <span class="hero-banner__avatars-more">mais</span>
+          </div>
+          <p class="hero-banner__proof-stat">
+            <strong>&gt; 0,90</strong>
+            <span>esfericidade média dos núcleos</span>
+          </p>
+          <span class="hero-curve hero-curve--top" aria-hidden="true"><span class="hero-curve__shape hero-curve__shape--fill"></span></span>
+          <span class="hero-curve hero-curve--proof-right" aria-hidden="true"><span class="hero-curve__shape hero-curve__shape--fill"></span></span>
         </div>
       </div>
     </section>
@@ -68,7 +112,7 @@
       </div>
     </section>
 
-    <section class="mx-auto max-w-[1240px] px-5 py-24 md:px-8">
+    <section id="diferencial" class="mx-auto max-w-[1240px] px-5 py-24 md:px-8">
       <div class="max-w-2xl">
         <p class="eyebrow">Diferencial tecnológico</p>
         <h2 class="mt-4 text-3xl font-semibold leading-tight text-foreground md:text-[2.6rem]">Uma rota de produção própria, mais curta que a extrusão-esferonização.</h2>

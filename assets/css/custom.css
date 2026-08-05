@@ -128,3 +128,417 @@ img {
 .form-success.visible {
   display: block;
 }
+
+/* —— Hero banner (moldura EquiSpace: box-shadow curves) —— */
+.hero-banner {
+  --hero-pad: 1rem;
+  --hero-r: 2rem;
+  position: relative;
+  background: #fff;
+  min-height: 100svh;
+}
+
+.hero-window {
+  position: absolute;
+  inset: var(--hero-pad);
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  color: #fff;
+}
+
+.hero-window__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: var(--hero-r);
+}
+
+.hero-window__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.hero-window__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      105deg,
+      oklch(18% 0.03 258 / 0.72) 0%,
+      oklch(18% 0.03 258 / 0.35) 42%,
+      oklch(18% 0.03 258 / 0.15) 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to top,
+      oklch(18% 0.03 258 / 0.45) 0%,
+      transparent 38%
+    );
+  pointer-events: none;
+}
+
+.hero-banner__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  padding: 1.35rem 1.75rem 1.1rem 1.35rem;
+  background: #fff;
+  border-bottom-right-radius: var(--hero-r);
+  color: var(--foreground);
+  overflow: visible;
+}
+
+.hero-banner__proof {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1.5rem 1.1rem 1.25rem;
+  background: #fff;
+  border-top-right-radius: var(--hero-r);
+  color: var(--foreground);
+  overflow: visible;
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+/* Filetes côncavos — mesma técnica do EquiSpace (box-shadow + overflow) */
+.hero-curve {
+  position: absolute;
+  width: var(--hero-r);
+  height: var(--hero-r);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-curve--right {
+  top: 0;
+  left: 100%;
+}
+
+.hero-curve--bottom {
+  top: 100%;
+  left: 0;
+}
+
+.hero-curve--top {
+  top: calc(var(--hero-r) * -1);
+  left: 0;
+}
+
+.hero-curve--proof-right {
+  right: calc(var(--hero-r) * -1);
+  bottom: 0;
+}
+
+.hero-curve__shape {
+  position: absolute;
+  width: calc(var(--hero-r) * 2);
+  height: calc(var(--hero-r) * 2);
+  /* Técnica EquiSpace: sombra enorme + border-radius = filete côncavo */
+  box-shadow: 0 2px 0 20rem #fff;
+}
+
+.hero-curve__shape--tl {
+  top: 0;
+  left: 0;
+  border-radius: var(--hero-r) 0 0 0;
+}
+
+.hero-curve__shape--fill {
+  bottom: 0;
+  left: 0;
+  border-radius: var(--hero-r);
+}
+
+.hero-banner__nav {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  padding: clamp(1.15rem, 2.2vw, 1.75rem) clamp(1.25rem, 3vw, 2.5rem)
+    0 clamp(12rem, 28vw, 22rem);
+}
+
+.hero-banner__nav-links {
+  display: none;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.hero-banner__nav-links a {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: oklch(1 0 0 / 0.88);
+  transition: color 0.2s ease;
+}
+
+.hero-banner__nav-links a:hover,
+.hero-banner__nav-links a[aria-current="page"] {
+  color: #fff;
+}
+
+.hero-banner__nav-cta {
+  display: none;
+  align-items: center;
+  border: 1.5px solid oklch(1 0 0 / 0.85);
+  border-radius: 999px;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: oklch(1 0 0 / 0.08);
+  backdrop-filter: blur(8px);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hero-banner__nav-cta:hover {
+  background: #fff;
+  color: var(--foreground);
+}
+
+.hero-banner__menu-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1.5px solid oklch(1 0 0 / 0.55);
+  border-radius: 999px;
+  background: oklch(1 0 0 / 0.08);
+  color: #fff;
+  cursor: pointer;
+}
+
+.hero-banner__body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(5.5rem, 12vh, 8rem) clamp(1.35rem, 5vw, 4.5rem)
+    clamp(7rem, 14vh, 9rem);
+  max-width: 42rem;
+}
+
+.hero-banner__title {
+  margin: 0;
+  font-family: Sora, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2.35rem, 6.2vw, 4.75rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 24px oklch(10% 0.02 258 / 0.35);
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-banner__lead {
+  margin: 1.15rem 0 0;
+  max-width: 28rem;
+  font-size: clamp(0.95rem, 1.35vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: oklch(1 0 0 / 0.82);
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.hero-banner__cta {
+  margin-top: 1.75rem;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.7rem;
+  border-radius: 999px;
+  background: oklch(78% 0.12 85);
+  padding: 0.85rem 1.45rem 0.85rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: oklch(22% 0.03 258);
+  transition: transform 0.25s ease, filter 0.25s ease;
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+.hero-banner__cta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.hero-banner__cta-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: oklch(22% 0.03 258);
+  flex-shrink: 0;
+}
+
+.hero-banner__avatars {
+  display: flex;
+  align-items: center;
+}
+
+.hero-banner__avatars > * {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  margin-left: -0.55rem;
+  object-fit: cover;
+}
+
+.hero-banner__avatars > *:first-child {
+  margin-left: 0;
+}
+
+.hero-banner__avatars-more {
+  display: grid;
+  place-items: center;
+  background: oklch(78% 0.12 85);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: oklch(22% 0.03 258);
+}
+
+.hero-banner__proof-stat {
+  line-height: 1.15;
+}
+
+.hero-banner__proof-stat strong {
+  display: block;
+  font-family: Sora, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.hero-banner__proof-stat span {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+}
+
+.hero-banner__scroll {
+  position: absolute;
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: oklch(1 0 0 / 0.75);
+  animation: hero-bob 2.4s ease-in-out infinite;
+}
+
+.hero-banner__scroll svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  opacity: 0.85;
+}
+
+.hero-banner__mobile {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: clamp(1rem, 3vw, 2rem);
+  z-index: 20;
+  min-width: 14rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: var(--shadow-raised);
+}
+
+.hero-banner__mobile.open {
+  display: block;
+}
+
+.hero-banner__mobile a {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.hero-banner__mobile a:hover {
+  background: var(--secondary);
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-banner__nav-links,
+  .hero-banner__nav-cta {
+    display: inline-flex;
+  }
+
+  .hero-banner__menu-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-banner__proof {
+    gap: 0.65rem;
+    padding-right: 1rem;
+  }
+
+  .hero-banner__avatars > * {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .hero-banner__proof-stat strong {
+    font-size: 1.15rem;
+  }
+
+  .hero-banner__scroll {
+    display: none;
+  }
+}
+
+body[data-page="home"] #site-header:empty {
+  display: none;
+}
