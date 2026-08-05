@@ -1,0 +1,130 @@
+:root {
+  --radius: 0.5rem;
+  --background: oklch(96.2% 0.004 264);
+  --foreground: oklch(20.5% 0.031 258);
+  --surface: oklch(100% 0 0);
+  --surface-foreground: oklch(20.5% 0.031 258);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(20.5% 0.031 258);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(20.5% 0.031 258);
+  --primary: oklch(24.3% 0.036 258);
+  --primary-foreground: oklch(97.5% 0.003 258);
+  --secondary: oklch(92.8% 0.006 258);
+  --secondary-foreground: oklch(24.3% 0.036 258);
+  --muted: oklch(93.8% 0.005 258);
+  --muted-foreground: oklch(51.8% 0.021 258);
+  --accent: oklch(61.2% 0.052 240);
+  --accent-foreground: oklch(99% 0 0);
+  --destructive: oklch(57.7% 0.245 27.325);
+  --destructive-foreground: oklch(98.4% 0.003 247.858);
+  --border: oklch(88.6% 0.006 258);
+  --input: oklch(88.6% 0.006 258);
+  --ring: oklch(61.2% 0.052 240);
+  --gradient-ink: linear-gradient(
+    155deg,
+    oklch(20.5% 0.031 258) 0%,
+    oklch(27.8% 0.04 252) 60%,
+    oklch(33% 0.045 248) 100%
+  );
+  --gradient-steel: linear-gradient(
+    100deg,
+    oklch(61.2% 0.052 240) 0%,
+    oklch(78% 0.03 240) 100%
+  );
+  --shadow-card: 0 1px 2px oklch(24.3% 0.036 258 / 0.04),
+    0 12px 32px -18px oklch(24.3% 0.036 258 / 0.35);
+  --shadow-raised: 0 24px 60px -28px oklch(24.3% 0.036 258 / 0.45);
+  --tracking-eyebrow: 0.16em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: Sora, ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.ink-panel {
+  background-image: var(--gradient-ink);
+  color: var(--primary-foreground);
+}
+
+.grid-etch {
+  background-image: linear-gradient(
+      90deg,
+      oklch(1 0 0 / 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(oklch(1 0 0 / 0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.surface-card {
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.h-18 {
+  height: 4.5rem;
+}
+
+#mobile-menu {
+  display: none;
+}
+
+#mobile-menu.open {
+  display: block;
+}
+
+.form-success {
+  display: none;
+  border-radius: 1rem;
+  background: var(--secondary);
+  padding: 1.5rem;
+  color: var(--foreground);
+}
+
+.form-success.visible {
+  display: block;
+}
