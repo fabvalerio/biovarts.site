@@ -2,12 +2,8 @@
   const base = document.body.dataset.base || "";
   const active = document.body.dataset.page || "";
 
-  const logo = `
-    <svg viewBox="0 0 48 48" class="h-8 w-8 shrink-0" aria-hidden="true" fill="none">
-      <path d="M24 3 45 24 24 45 3 24 24 3Z" stroke="currentColor" stroke-width="2.4" opacity="0.85"></path>
-      <path d="M17 33c6-3 6.5-7 4-11.5S17.5 14 20 11" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"></path>
-      <path d="M27 37c7-4 7.5-9 4.5-14.5S27.5 13 31 9" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" opacity="0.6"></path>
-    </svg>`;
+  const logoHeader = `<img src="${base}assets/images/logo-cinza2.png" alt="Biovarts" width="1800" height="500" class="h-8 w-auto md:h-9" />`;
+  const logoFooter = `<img src="${base}assets/images/logo-branco.png" alt="Biovarts" width="2346" height="1792" class="h-[4.5rem] w-auto" />`;
 
   function navClass(page) {
     return page === active
@@ -27,11 +23,8 @@
     headerEl.innerHTML = `
       <header class="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
         <div class="mx-auto flex h-18 max-w-[1240px] items-center justify-between px-5 py-4 md:px-8">
-          <a aria-label="Biovarts — início" href="${base}index.html">
-            <span class="inline-flex items-center gap-2.5 text-foreground">
-              ${logo}
-              <span class="font-display text-[1.35rem] font-semibold tracking-tight">Biovarts</span>
-            </span>
+          <a aria-label="Biovarts — início" href="${base}index.html" class="inline-flex items-center">
+            ${logoHeader}
           </a>
           <nav class="hidden items-center gap-8 lg:flex" aria-label="Principal">
             <a href="${base}sobre.html" class="${navClass("sobre")}">Sobre</a>
@@ -69,10 +62,9 @@
         <div class="grid-etch absolute inset-0" aria-hidden="true"></div>
         <div class="relative mx-auto grid max-w-[1240px] gap-12 px-5 py-20 md:px-8 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <span class="inline-flex items-center gap-2.5 text-primary-foreground">
-              ${logo}
-              <span class="font-display text-[1.35rem] font-semibold tracking-tight">Biovarts</span>
-            </span>
+            <a href="${base}index.html" class="inline-flex items-center" aria-label="Biovarts — início">
+              ${logoFooter}
+            </a>
             <p class="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/60">Tecnologia nacional para produção de pellets farmacêuticos e sistemas multiparticulados de liberação modificada.</p>
             <a href="${base}contato.html" class="mt-8 inline-flex rounded-full border border-primary-foreground/25 px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">Solicitar orçamento</a>
           </div>
@@ -126,5 +118,130 @@
         success.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     });
+  }
+
+  const sliderRoot = document.querySelector("[data-hero-slider]");
+  if (sliderRoot) {
+    const slides = Array.prototype.slice.call(
+      sliderRoot.querySelectorAll("[data-slide]")
+    );
+    const copySlides = Array.prototype.slice.call(
+      document.querySelectorAll("[data-hero-copy-slide]")
+    );
+    const dotsRoot = document.querySelector("[data-hero-dots]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const imageIntervalMs = reduceMotion ? 7000 : 5000;
+    const videoIntervalMs = reduceMotion ? 7000 : 10000;
+    let index = Math.max(
+      0,
+      slides.findIndex(function (slide) {
+        return slide.classList.contains("is-active");
+      })
+    );
+    let timer = null;
+
+    function dwellMs(i) {
+      const slide = slides[i];
+      if (!slide || slide.tagName !== "VIDEO") return imageIntervalMs;
+      const duration = slide.duration;
+      if (duration && isFinite(duration) && duration > 0) {
+        return Math.round(duration * 1000);
+      }
+      return videoIntervalMs;
+    }
+
+    function syncVideo(activeIndex) {
+      slides.forEach(function (slide, i) {
+        if (slide.tagName !== "VIDEO") return;
+        if (i === activeIndex && !reduceMotion) {
+          slide.muted = true;
+          var playPromise = slide.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(function () {});
+          }
+        } else {
+          slide.pause();
+          try {
+            slide.currentTime = 0;
+          } catch (e) {}
+        }
+      });
+    }
+
+    function goTo(next) {
+      if (!slides.length) return;
+      const current = ((next % slides.length) + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle("is-active", i === current);
+      });
+      copySlides.forEach(function (panel, i) {
+        const active = i === current;
+        panel.classList.toggle("is-active", active);
+        panel.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+      if (dotsRoot) {
+        Array.prototype.forEach.call(dotsRoot.children, function (dot, i) {
+          const active = i === current;
+          dot.classList.toggle("is-active", active);
+          dot.setAttribute("aria-selected", active ? "true" : "false");
+        });
+      }
+      syncVideo(current);
+      index = current;
+    }
+
+    if (dotsRoot && slides.length > 1) {
+      slides.forEach(function (_, i) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "hero-slider__dot" + (i === index ? " is-active" : "");
+        btn.setAttribute("role", "tab");
+        btn.setAttribute("aria-label", "Ir para slide " + (i + 1));
+        btn.setAttribute("aria-selected", i === index ? "true" : "false");
+        btn.addEventListener("click", function () {
+          goTo(i);
+          restart();
+        });
+        dotsRoot.appendChild(btn);
+      });
+    }
+
+    function tick() {
+      goTo(index + 1);
+      start();
+    }
+
+    function stop() {
+      if (timer) {
+        window.clearTimeout(timer);
+        timer = null;
+      }
+    }
+
+    function start() {
+      if (slides.length < 2) return;
+      stop();
+      timer = window.setTimeout(tick, dwellMs(index));
+    }
+
+    function restart() {
+      stop();
+      start();
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        stop();
+        slides.forEach(function (slide) {
+          if (slide.tagName === "VIDEO") slide.pause();
+        });
+      } else {
+        syncVideo(index);
+        start();
+      }
+    });
+
+    goTo(index);
+    start();
   }
 })();

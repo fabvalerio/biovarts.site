@@ -22,20 +22,71 @@
   <main>
     <section class="hero-banner" aria-label="Banner principal">
       <div class="hero-window">
-        <div class="hero-window__media" aria-hidden="true">
-          <img src="assets/images/hero-pellets-BYEi2C_F.jpg" alt="" width="1600" height="1200" />
-          <div class="hero-window__shade"></div>
+        <div class="hero-window__media">
+          <div class="hero-slider" data-hero-slider>
+            <video
+              class="hero-slider__slide is-active"
+              data-slide
+              data-hero-video
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/images/hero-pellets-BYEi2C_F.jpg"
+              aria-label="Vídeo de apresentação Biovarts"
+            >
+              <source src="assets/videos/dian.mp4" type="video/mp4" />
+            </video>
+            <img
+              class="hero-slider__slide"
+              src="assets/images/pellet-micrograph-DLnoky-e.jpg"
+              alt="Micrografia de pellets porosos de MCC"
+              width="1000"
+              height="1000"
+              data-slide
+              loading="lazy"
+            />
+            <img
+              class="hero-slider__slide"
+              src="assets/images/coating-abstract-3k-C1c5g.jpg"
+              alt="Pellets com revestimento farmacêutico"
+              width="1000"
+              height="800"
+              data-slide
+              loading="lazy"
+            />
+            <img
+              class="hero-slider__slide"
+              src="assets/images/tech-fluidbed-DB-k0coY.jpg"
+              alt="Equipamento de leito fluidizado para peletização"
+              width="1200"
+              height="800"
+              data-slide
+              loading="lazy"
+            />
+            <img
+              class="hero-slider__slide"
+              src="assets/images/lab-hands-BRNwXx_P.jpg"
+              alt="Análise de pellets em laboratório"
+              width="1000"
+              height="1000"
+              data-slide
+              loading="lazy"
+            />
+          </div>
+          <div class="hero-window__shade" aria-hidden="true"></div>
         </div>
 
+        <div class="hero-slider__dots" data-hero-dots role="tablist" aria-label="Slides do banner"></div>
+
         <a href="index.html" class="hero-banner__logo" aria-label="Biovarts — início">
-          <span class="inline-flex items-center gap-2.5">
-            <svg viewBox="0 0 48 48" class="h-8 w-8 shrink-0" aria-hidden="true" fill="none">
-              <path d="M24 3 45 24 24 45 3 24 24 3Z" stroke="currentColor" stroke-width="2.4" opacity="0.85"></path>
-              <path d="M17 33c6-3 6.5-7 4-11.5S17.5 14 20 11" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"></path>
-              <path d="M27 37c7-4 7.5-9 4.5-14.5S27.5 13 31 9" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" opacity="0.6"></path>
-            </svg>
-            <span class="font-display text-[1.35rem] font-semibold tracking-tight">Biovarts</span>
-          </span>
+          <img
+            src="assets/images/logo-cinza2.png"
+            alt="Biovarts"
+            class="hero-banner__logo-img"
+            width="1800"
+            height="500"
+          />
           <span class="hero-curve hero-curve--right" aria-hidden="true"><span class="hero-curve__shape hero-curve__shape--tl"></span></span>
           <span class="hero-curve hero-curve--bottom" aria-hidden="true"><span class="hero-curve__shape hero-curve__shape--tl"></span></span>
         </a>
@@ -64,15 +115,57 @@
           </div>
         </div>
 
-        <div class="hero-banner__body">
-          <h1 class="hero-banner__title">Pellets farmacêuticos</h1>
-          <p class="hero-banner__lead">
-            Tecnologia própria para núcleos de MCC e sistemas multiparticulados — produtividade, controle granulométrico e alta capacidade de incorporação de ativos.
-          </p>
-          <a href="contato.html" class="hero-banner__cta">
-            <span class="hero-banner__cta-dot" aria-hidden="true"></span>
-            Solicitar amostra
-          </a>
+        <div class="hero-banner__body" data-hero-copy>
+          <div class="hero-copy is-active" data-hero-copy-slide>
+            <h1 class="hero-banner__title">Pellets farmacêuticos</h1>
+            <p class="hero-banner__lead">
+              Tecnologia própria para núcleos de MCC e sistemas multiparticulados — produtividade, controle granulométrico e alta capacidade de incorporação de ativos.
+            </p>
+            <a href="contato.html" class="hero-banner__cta">
+              <span class="hero-banner__cta-dot" aria-hidden="true"></span>
+              Solicitar amostra
+            </a>
+          </div>
+          <div class="hero-copy" data-hero-copy-slide aria-hidden="true">
+            <h2 class="hero-banner__title">Controle granulométrico</h2>
+            <p class="hero-banner__lead">
+              Distribuição estreita e elevada esfericidade para peletização, drug layering e revestimento com reprodutibilidade lote a lote.
+            </p>
+            <a href="produtos.html" class="hero-banner__cta">
+              <span class="hero-banner__cta-dot" aria-hidden="true"></span>
+              Ver produtos
+            </a>
+          </div>
+          <div class="hero-copy" data-hero-copy-slide aria-hidden="true">
+            <h2 class="hero-banner__title">Liberação modificada</h2>
+            <p class="hero-banner__lead">
+              Arquiteturas multiparticuladas com núcleos revestidos — mais seguras, previsíveis e adequadas a medicamentos e nutracêuticos.
+            </p>
+            <a href="pesquisa-desenvolvimento.html" class="hero-banner__cta">
+              <span class="hero-banner__cta-dot" aria-hidden="true"></span>
+              Conhecer o P&amp;D
+            </a>
+          </div>
+          <div class="hero-copy" data-hero-copy-slide aria-hidden="true">
+            <h2 class="hero-banner__title">Processo proprietário</h2>
+            <p class="hero-banner__lead">
+              Rota mais curta que a extrusão-esferonização, com maior produtividade e menor consumo energético por quilo produzido.
+            </p>
+            <a href="sobre.html" class="hero-banner__cta">
+              <span class="hero-banner__cta-dot" aria-hidden="true"></span>
+              Conheça a Biovarts
+            </a>
+          </div>
+          <div class="hero-copy" data-hero-copy-slide aria-hidden="true">
+            <h2 class="hero-banner__title">Suporte técnico</h2>
+            <p class="hero-banner__lead">
+              Acompanhamento farmacotécnico na implantação, validação e produção — do conceito ao lote industrial.
+            </p>
+            <a href="contato.html" class="hero-banner__cta">
+              <span class="hero-banner__cta-dot" aria-hidden="true"></span>
+              Falar com a equipe
+            </a>
+          </div>
         </div>
 
         <a href="#diferencial" class="hero-banner__scroll">

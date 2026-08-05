@@ -133,8 +133,9 @@ img {
 .hero-banner {
   --hero-pad: 1rem;
   --hero-r: 2rem;
+  --hero-frame: var(--background);
   position: relative;
-  background: #fff;
+  background: var(--hero-frame);
   min-height: 100svh;
 }
 
@@ -155,16 +156,41 @@ img {
   border-radius: var(--hero-r);
 }
 
-.hero-window__media img {
+.hero-slider {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slider__slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 40%;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 1.1s ease,
+    transform 6.5s ease;
+  pointer-events: none;
+}
+
+video.hero-slider__slide {
+  object-position: center center;
+  background: oklch(18% 0.03 258);
+}
+
+.hero-slider__slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
 }
 
 .hero-window__shade {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     linear-gradient(
       105deg,
@@ -181,6 +207,39 @@ img {
   pointer-events: none;
 }
 
+.hero-slider__dots {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1.25rem, 4vw, 2.5rem);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.hero-slider__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: oklch(1 0 0 / 0.35);
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    height 0.25s ease;
+}
+
+.hero-slider__dot:hover {
+  background: oklch(1 0 0 / 0.65);
+}
+
+.hero-slider__dot.is-active {
+  height: 1.15rem;
+  background: #fff;
+}
+
 .hero-banner__logo {
   position: absolute;
   top: 0;
@@ -188,11 +247,17 @@ img {
   z-index: 4;
   display: flex;
   align-items: center;
-  padding: 1.35rem 1.75rem 1.1rem 1.35rem;
-  background: #fff;
+  padding: 1.1rem 1.6rem 0.95rem 1.2rem;
+  background: var(--hero-frame);
   border-bottom-right-radius: var(--hero-r);
   color: var(--foreground);
   overflow: visible;
+}
+
+.hero-banner__logo-img {
+  display: block;
+  height: clamp(1.85rem, 3.2vw, 2.35rem);
+  width: auto;
 }
 
 .hero-banner__proof {
@@ -204,7 +269,7 @@ img {
   align-items: center;
   gap: 0.75rem;
   padding: 1.1rem 1.5rem 1.1rem 1.25rem;
-  background: #fff;
+  background: var(--hero-frame);
   border-top-right-radius: var(--hero-r);
   color: var(--foreground);
   overflow: visible;
@@ -245,7 +310,7 @@ img {
   width: calc(var(--hero-r) * 2);
   height: calc(var(--hero-r) * 2);
   /* Técnica EquiSpace: sombra enorme + border-radius = filete côncavo */
-  box-shadow: 0 2px 0 20rem #fff;
+  box-shadow: 0 2px 0 20rem var(--hero-frame);
 }
 
 .hero-curve__shape--tl {
@@ -327,13 +392,34 @@ img {
 .hero-banner__body {
   position: relative;
   z-index: 2;
-  display: flex;
+  display: grid;
   flex: 1;
-  flex-direction: column;
-  justify-content: center;
+  align-content: center;
   padding: clamp(5.5rem, 12vh, 8rem) clamp(1.35rem, 5vw, 4.5rem)
     clamp(7rem, 14vh, 9rem);
   max-width: 42rem;
+}
+
+.hero-copy {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.7s;
+  pointer-events: none;
+}
+
+.hero-copy.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .hero-banner__title {
@@ -346,7 +432,6 @@ img {
   text-transform: uppercase;
   color: #fff;
   text-shadow: 0 1px 24px oklch(10% 0.02 258 / 0.35);
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-banner__lead {
@@ -356,7 +441,6 @@ img {
   font-weight: 400;
   line-height: 1.55;
   color: oklch(1 0 0 / 0.82);
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
 
 .hero-banner__cta {
@@ -372,7 +456,6 @@ img {
   font-weight: 700;
   color: oklch(22% 0.03 258);
   transition: transform 0.25s ease, filter 0.25s ease;
-  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
 }
 
 .hero-banner__cta:hover {
@@ -536,6 +619,30 @@ img {
 
   .hero-banner__scroll {
     display: none;
+  }
+
+  .hero-slider__dots {
+    bottom: clamp(5.5rem, 18vw, 7rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider__slide {
+    transition: opacity 0.35s ease;
+    transform: none;
+  }
+
+  .hero-slider__slide.is-active {
+    transform: none;
+  }
+
+  .hero-copy {
+    transition: opacity 0.35s ease;
+    transform: none;
+  }
+
+  .hero-copy.is-active {
+    transform: none;
   }
 }
 
