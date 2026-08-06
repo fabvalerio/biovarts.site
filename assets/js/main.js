@@ -3,7 +3,7 @@
   const active = document.body.dataset.page || "";
 
   const logoHeader = `<img src="${base}assets/images/logo-cinza2.png" alt="Biovarts" width="1800" height="500" class="h-8 w-auto md:h-9" />`;
-  const logoFooter = `<img src="${base}assets/images/logo-branco.png" alt="Biovarts" width="2346" height="1792" class="h-[4.5rem] w-auto" />`;
+  const logoFooter = `<img src="${base}assets/images/logo-branco.png" alt="Biovarts" width="210px" />`;
 
   function navClass(page) {
     return page === active
@@ -65,8 +65,7 @@
             <a href="${base}index.html" class="inline-flex items-center" aria-label="Biovarts — início">
               ${logoFooter}
             </a>
-            <p class="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/60">Tecnologia nacional para produção de pellets farmacêuticos e sistemas multiparticulados de liberação modificada.</p>
-            <a href="${base}contato.html" class="mt-8 inline-flex rounded-full border border-primary-foreground/25 px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">Solicitar orçamento</a>
+            <p class="mt-3 max-w-xs text-sm leading-relaxed text-primary-foreground/60">Tecnologia nacional para produção de pellets farmacêuticos e sistemas multiparticulados de liberação modificada.</p>
           </div>
           <div>
             <p class="eyebrow text-primary-foreground/45">Navegação</p>
@@ -91,7 +90,7 @@
         <div class="relative z-10 border-t border-primary-foreground/12">
           <div class="mx-auto flex max-w-[1240px] flex-col gap-2 px-5 py-6 text-xs text-primary-foreground/45 md:flex-row md:items-center md:justify-between md:px-8">
             <span>© 2026 Biovarts. Todos os direitos reservados.</span>
-            <span>Pellets farmacêuticos • MCC • Multiparticulados</span>
+            <span>Vortex Comunicação</span>
           </div>
         </div>
       </footer>`;
