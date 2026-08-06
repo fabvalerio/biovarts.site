@@ -11,9 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script src="assets/js/tailwind-config.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = window.biovartsTailwind;</script>
+  <link rel="stylesheet" href="assets/css/tailwind.css" />
   <link rel="stylesheet" href="assets/css/custom.css" />
 </head>
 <body data-page="home" data-base="">
@@ -178,7 +176,7 @@
 
         <div class="hero-banner__proof">
           <div class="hero-banner__avatars" aria-hidden="true">
-            <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="" width="64" height="64" />
+            <img src="assets/images/brasil.png" alt="" width="64" height="64" />
           </div>
           <p class="hero-banner__proof-stat">
             <strong>EMPRESA 100%</strong>
@@ -190,7 +188,7 @@
       </div>
     </section>
 
-    <section class="border-b border-border bg-[#fff]">
+    <section class="border-b border-border bg-[#F1F2F5]">
       <div class="mx-auto max-w-[1240px] px-5 py-6 md:px-8">
         <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3">
           <li>
@@ -225,95 +223,97 @@
         <p class="mt-5 text-base leading-relaxed text-muted-foreground">O processo desenvolvido internamente elimina etapas da fabricação convencional, reduzindo custo e variabilidade sem abrir mão da qualidade do núcleo.</p>
       </div>
       <div class="mt-14 grid gap-px overflow-hidden rounded-2xl bg-border md:grid-cols-2 lg:grid-cols-4">
-        <div class="bg-surface p-8">
-          <span class="font-mono text-xs text-accent">01</span>
+        <div class="feature-card bg-surface p-8">
+          <span class="feature-card__index font-mono text-xs text-accent">01</span>
           <h3 class="mt-6 text-lg font-semibold text-foreground">Tecnologia proprietária</h3>
           <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Processo próprio que elimina etapas da extrusão-esferonização convencional.</p>
         </div>
-        <div class="bg-surface p-8">
-          <span class="font-mono text-xs text-accent">02</span>
+        <div class="feature-card bg-surface p-8">
+          <span class="feature-card__index font-mono text-xs text-accent">02</span>
           <h3 class="mt-6 text-lg font-semibold text-foreground">Maior produtividade</h3>
           <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Rota mais curta, com menor consumo energético por quilo produzido.</p>
         </div>
-        <div class="bg-surface p-8">
-          <span class="font-mono text-xs text-accent">03</span>
+        <div class="feature-card bg-surface p-8">
+          <span class="feature-card__index font-mono text-xs text-accent">03</span>
           <h3 class="mt-6 text-lg font-semibold text-foreground">Controle granulométrico</h3>
           <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Distribuição estreita e elevada reprodutibilidade lote a lote.</p>
         </div>
-        <div class="bg-surface p-8">
-          <span class="font-mono text-xs text-accent">04</span>
+        <div class="feature-card bg-surface p-8">
+          <span class="feature-card__index font-mono text-xs text-accent">04</span>
           <h3 class="mt-6 text-lg font-semibold text-foreground">Alta porosidade</h3>
           <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Área específica ampliada para incorporação eficiente de IFAs.</p>
         </div>
       </div>
     </section>
 
-    <section class="mx-auto max-w-[1240px] px-5 pb-24 md:px-8">
+    <section class="solutions-panel mx-auto max-w-[1240px] px-5 pb-24 md:px-8">
       <div class="grid overflow-hidden rounded-3xl shadow-[var(--shadow-card)] lg:grid-cols-2">
         <div class="bg-surface p-8 md:p-12">
           <div class="flex items-center gap-4">
             <span class="eyebrow">Soluções</span>
             <span class="h-px flex-1 bg-border"></span>
-            <span class="eyebrow">Escopo 2026</span>
           </div>
-          <ul class="mt-8">
-            <li class="flex items-center justify-between gap-6 border-b border-border py-5">
+          <ul class="solutions-list">
+            <li class="solutions-item is-active flex items-center justify-between gap-6 border-b border-border py-5" data-image="assets/images/tech-fluidbed-DB-k0coY.jpg" data-alt="Equipamento de leito fluidizado para desenvolvimento de processos farmacêuticos">
               <div>
                 <p class="text-lg font-medium text-foreground">Desenvolvimento de processos farmacêuticos</p>
                 <p class="mt-1 text-sm text-muted-foreground">Definição, otimização e escalonamento de processos de peletização, layering e revestimento.</p>
               </div>
-              <a aria-label="Saiba mais sobre Desenvolvimento de processos farmacêuticos" href="pesquisa-desenvolvimento.html" class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground">
+              <a aria-label="Saiba mais sobre Desenvolvimento de processos farmacêuticos" href="pesquisa-desenvolvimento.html" class="solutions-item__link grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
               </a>
             </li>
-            <li class="flex items-center justify-between gap-6 border-b border-border py-5">
+            <li class="solutions-item flex items-center justify-between gap-6 border-b border-border" data-image="assets/images/product-pellets-jar-3O0Hgq2O.jpg" data-alt="Frasco de pellets inertes produzidos sob encomenda">
               <div>
                 <p class="text-lg font-medium text-foreground">Industrialização por encomenda</p>
                 <p class="mt-1 text-sm text-muted-foreground">Produção sob contrato de pellets e sistemas multiparticulados conforme especificação do cliente.</p>
               </div>
-              <a aria-label="Saiba mais sobre Industrialização por encomenda" href="pesquisa-desenvolvimento.html" class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground">
+              <a aria-label="Saiba mais sobre Industrialização por encomenda" href="pesquisa-desenvolvimento.html" class="solutions-item__link grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
               </a>
             </li>
-            <li class="flex items-center justify-between gap-6 border-b border-border py-5">
+            <li class="solutions-item flex items-center justify-between gap-6 border-b border-border" data-image="assets/images/coating-abstract-3k-C1c5g.jpg" data-alt="Pellets revestidos para formulações customizadas">
               <div>
                 <p class="text-lg font-medium text-foreground">Desenvolvimento de formulações</p>
                 <p class="mt-1 text-sm text-muted-foreground">Formulações customizadas para medicamentos e nutracêuticos, do conceito ao lote piloto.</p>
               </div>
-              <a aria-label="Saiba mais sobre Desenvolvimento de formulações" href="pesquisa-desenvolvimento.html" class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground">
+              <a aria-label="Saiba mais sobre Desenvolvimento de formulações" href="pesquisa-desenvolvimento.html" class="solutions-item__link grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
               </a>
             </li>
-            <li class="flex items-center justify-between gap-6 border-b border-border py-5">
+            <li class="solutions-item flex items-center justify-between gap-6 border-b border-border" data-image="assets/images/pellet-micrograph-DLnoky-e.jpg" data-alt="Micrografia de núcleos multiparticulados">
               <div>
                 <p class="text-lg font-medium text-foreground">Tecnologias multiparticuladas</p>
                 <p class="mt-1 text-sm text-muted-foreground">Arquiteturas de liberação modificada baseadas em núcleos revestidos e sistemas multiunitários.</p>
               </div>
-              <a aria-label="Saiba mais sobre Tecnologias multiparticuladas" href="pesquisa-desenvolvimento.html" class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground">
+              <a aria-label="Saiba mais sobre Tecnologias multiparticuladas" href="pesquisa-desenvolvimento.html" class="solutions-item__link grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
               </a>
             </li>
-            <li class="flex items-center justify-between gap-6 border-b border-border py-5">
+            <li class="solutions-item flex items-center justify-between gap-6 border-b border-border" data-image="assets/images/lab-hands-BRNwXx_P.jpg" data-alt="Pesquisa aplicada em laboratório farmacêutico">
               <div>
                 <p class="text-lg font-medium text-foreground">Pesquisa aplicada</p>
                 <p class="mt-1 text-sm text-muted-foreground">Projetos de P&amp;D conduzidos com universidades, laboratórios parceiros e especialistas do setor.</p>
               </div>
-              <a aria-label="Saiba mais sobre Pesquisa aplicada" href="pesquisa-desenvolvimento.html" class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground">
+              <a aria-label="Saiba mais sobre Pesquisa aplicada" href="pesquisa-desenvolvimento.html" class="solutions-item__link grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
               </a>
             </li>
-            <li class="flex items-center justify-between gap-6 py-5">
+            <li class="solutions-item flex items-center justify-between gap-6 py-5" data-image="assets/images/hero-pellets-BYEi2C_F.jpg" data-alt="Suporte técnico em peletização e produção de rotina">
               <div>
                 <p class="text-lg font-medium text-foreground">Suporte técnico especializado</p>
                 <p class="mt-1 text-sm text-muted-foreground">Acompanhamento farmacotécnico durante implantação, validação e produção de rotina.</p>
               </div>
-              <a aria-label="Saiba mais sobre Suporte técnico especializado" href="pesquisa-desenvolvimento.html" class="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground">
+              <a aria-label="Saiba mais sobre Suporte técnico especializado" href="pesquisa-desenvolvimento.html" class="solutions-item__link grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-muted-foreground">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
               </a>
             </li>
           </ul>
         </div>
-        <img src="assets/images/product-pellets-jar-3O0Hgq2O.jpg" alt="Frasco de pellets inertes de celulose microcristalina" width="1200" height="1200" loading="lazy" class="h-full min-h-[320px] w-full object-cover" />
+        <div class="solutions-media relative overflow-hidden bg-muted">
+          <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Equipamento de leito fluidizado para desenvolvimento de processos farmacêuticos" width="1200" height="1200" loading="lazy" class="solutions-media__img is-active" />
+          <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="" width="1200" height="1200" loading="lazy" class="solutions-media__img" aria-hidden="true" />
+        </div>
       </div>
     </section>
 
@@ -326,9 +326,9 @@
         <a href="produtos.html" class="rounded-full bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground">Ver tudo</a>
       </div>
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <a href="produtos.html" class="group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
-          <div class="relative">
-            <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Pellets de Celulose Microcristalina (MCC)" width="1000" height="1000" loading="lazy" class="aspect-square w-full object-cover" />
+        <a href="produtos.html" class="product-card group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
+          <div class="product-card__media relative">
+            <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Pellets de Celulose Microcristalina (MCC)" width="1000" height="1000" loading="lazy" class="product-card__img" />
             <span class="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-primary-foreground">Disponível</span>
           </div>
           <div class="flex items-start justify-between gap-4 bg-secondary p-6 h-full">
@@ -341,9 +341,9 @@
             </span>
           </div>
         </a>
-        <a href="produtos.html" class="group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
-          <div class="relative">
-            <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Pellets contendo IFAs" width="1000" height="1000" loading="lazy" class="aspect-square w-full object-cover" />
+        <a href="produtos.html" class="product-card group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
+          <div class="product-card__media relative">
+            <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Pellets contendo IFAs" width="1000" height="1000" loading="lazy" class="product-card__img" />
             <span class="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-primary-foreground">Médio prazo</span>
           </div>
           <div class="flex items-start justify-between gap-4 bg-secondary p-6 h-full">
@@ -356,9 +356,9 @@
             </span>
           </div>
         </a>
-        <a href="produtos.html" class="group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
-          <div class="relative">
-            <img src="assets/images/product-pellets-jar-3O0Hgq2O.jpg" alt="Sistemas multiparticulados de liberação modificada" width="1000" height="1000" loading="lazy" class="aspect-square w-full object-cover" />
+        <a href="produtos.html" class="product-card group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
+          <div class="product-card__media relative">
+            <img src="assets/images/product-pellets-jar-3O0Hgq2O.jpg" alt="Sistemas multiparticulados de liberação modificada" width="1000" height="1000" loading="lazy" class="product-card__img" />
             <span class="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-primary-foreground">Médio prazo</span>
           </div>
           <div class="flex items-start justify-between gap-4 bg-secondary p-6 h-full">
@@ -371,9 +371,9 @@
             </span>
           </div>
         </a>
-        <a href="produtos.html" class="group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
-          <div class="relative">
-            <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Formulações farmacêuticas completas" width="1000" height="1000" loading="lazy" class="aspect-square w-full object-cover" />
+        <a href="produtos.html" class="product-card group overflow-hidden rounded-2xl bg-surface shadow-[var(--shadow-card)]">
+          <div class="product-card__media relative">
+            <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Formulações farmacêuticas completas" width="1000" height="1000" loading="lazy" class="product-card__img" />
             <span class="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-widest text-primary-foreground">Médio prazo</span>
           </div>
           <div class="flex items-start justify-between gap-4 bg-secondary p-6 h-full">
@@ -399,10 +399,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </a>
         </div>
-        <div class="grid grid-cols-3 gap-3">
-          <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Micrografia de pellet poroso" width="1000" height="1000" loading="lazy" class="aspect-[3/4] w-full rounded-xl object-cover" />
-          <img src="assets/images/lab-hands-BRNwXx_P.jpg" alt="Análise de pellets em laboratório" width="1000" height="1000" loading="lazy" class="mt-8 aspect-[3/4] w-full rounded-xl object-cover" />
-          <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Pellets revestidos" width="1000" height="800" loading="lazy" class="aspect-[3/4] w-full rounded-xl object-cover" />
+        <div class="mission-mosaic grid grid-cols-3 gap-3">
+          <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Micrografia de pellet poroso" width="1000" height="1000" loading="lazy" class="mission-mosaic__img rounded-xl" />
+          <img src="assets/images/lab-hands-BRNwXx_P.jpg" alt="Análise de pellets em laboratório" width="1000" height="1000" loading="lazy" class="mission-mosaic__img mission-mosaic__img--offset rounded-xl" />
+          <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Pellets revestidos" width="1000" height="800" loading="lazy" class="mission-mosaic__img rounded-xl" />
         </div>
       </div>
     </section>
@@ -417,17 +417,17 @@
       </div>
       <div class="mt-12 grid gap-8 md:grid-cols-3">
         <a href="blog/por-que-pellets-mcc.html" class="group">
-          <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas" width="1000" height="700" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover" />
+          <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas" width="1000" height="700" loading="lazy" class="pub-card__img w-full rounded-xl" />
           <p class="mt-5 text-lg font-medium leading-snug text-foreground group-hover:text-accent">Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas</p>
           <p class="mt-3 text-xs text-muted-foreground">22 de julho de 2026</p>
         </a>
         <a href="blog/dependencia-de-importacao.html" class="group">
-          <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional" width="1000" height="700" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover" />
+          <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional" width="1000" height="700" loading="lazy" class="pub-card__img w-full rounded-xl" />
           <p class="mt-5 text-lg font-medium leading-snug text-foreground group-hover:text-accent">Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional</p>
           <p class="mt-3 text-xs text-muted-foreground">30 de junho de 2026</p>
         </a>
         <a href="blog/wurster-coating-parametros.html" class="group">
-          <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Wurster coating: os parâmetros que determinam a uniformidade de camada" width="1000" height="700" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover" />
+          <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Wurster coating: os parâmetros que determinam a uniformidade de camada" width="1000" height="700" loading="lazy" class="pub-card__img w-full rounded-xl" />
           <p class="mt-5 text-lg font-medium leading-snug text-foreground group-hover:text-accent">Wurster coating: os parâmetros que determinam a uniformidade de camada</p>
           <p class="mt-3 text-xs text-muted-foreground">11 de junho de 2026</p>
         </a>
@@ -435,16 +435,22 @@
     </section>
 
     <section class="mx-auto mt-24 max-w-[1240px] px-5 md:px-8">
-      <div class="ink-panel relative overflow-hidden rounded-3xl px-8 py-16 md:px-14">
+      <div class="ink-panel cta-globe-panel relative overflow-hidden rounded-3xl" data-cta-globe>
         <div class="grid-etch absolute inset-0" aria-hidden="true"></div>
-        <div class="relative flex flex-wrap items-end justify-between gap-8">
-          <div>
+        <div class="cta-globe-panel__glow" aria-hidden="true"></div>
+
+        <div class="relative flex min-h-[420px] flex-col md:flex-row md:min-h-[480px]">
+          <div class="relative z-10 flex flex-1 flex-col justify-center px-8 py-14 md:px-14 md:py-16">
             <h2 class="max-w-xl text-3xl font-semibold leading-tight text-primary-foreground md:text-[2.4rem]">Vamos desenvolver seu próximo produto multiparticulado.</h2>
             <p class="mt-4 max-w-lg text-primary-foreground/60">Envie sua demanda técnica e retornamos com viabilidade, escopo e próximos passos.</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="contato.html" class="rounded-full bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary">Falar com a equipe</a>
+              <a href="https://wa.me/5545999999999" target="_blank" rel="noreferrer" class="rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">WhatsApp</a>
+            </div>
           </div>
-          <div class="flex flex-wrap gap-3">
-            <a href="contato.html" class="rounded-full bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary">Falar com a equipe</a>
-            <a href="https://wa.me/5545999999999" target="_blank" rel="noreferrer" class="rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">WhatsApp</a>
+
+          <div class="cta-globe relative z-10 flex flex-1 items-center justify-center p-4 md:p-0" aria-hidden="true">
+            <canvas class="cta-globe__canvas" data-globe-canvas></canvas>
           </div>
         </div>
       </div>

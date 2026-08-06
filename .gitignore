@@ -1,0 +1,6 @@
+# Windows Mark-of-the-Web / ADS (invalid path on Windows checkout)
+*:Zone.Identifier
+*Zone.Identifier
+
+# Dependencies
+node_modules/
