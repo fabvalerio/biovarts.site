@@ -310,7 +310,7 @@ video.hero-slider__slide {
 
 .hero-banner__logo-img {
   display: block;
-  height: clamp(1.85rem, 3.2vw, 2.35rem);
+  height: clamp(4.85rem, 3.2vw, 2.35rem);
   width: auto;
 }
 
