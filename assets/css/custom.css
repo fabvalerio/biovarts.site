@@ -1264,11 +1264,42 @@ body[data-page="home"] #site-header:empty {
   }
 }
 
-/* —— Publications: fixed image height —— */
+/* —— Publications: image fade on hover (mesmo efeito do Portfólio) —— */
+.pub-card__media {
+  height: 350px;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
 .pub-card__img {
   width: 100%;
-  height: 350px;
+  height: 100%;
   object-fit: cover;
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.45s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.group:hover .pub-card__img,
+.group:focus-visible .pub-card__img {
+  opacity: 0.72;
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pub-card__img {
+    transition: none;
+    will-change: auto;
+  }
+
+  .group:hover .pub-card__img,
+  .group:focus-visible .pub-card__img {
+    opacity: 0.85;
+    transform: none;
+  }
 }
 
 /* —— Page hero (internas): entrada suave —— */
