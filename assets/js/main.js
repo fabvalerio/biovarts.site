@@ -979,4 +979,77 @@
 
     searchInput.addEventListener("input", applyFilters);
   })();
+
+  /* Post: progresso de leitura + copiar link */
+  (function initPostReading() {
+    const article = document.querySelector("[data-post-article]");
+    const progressBar = document.querySelector("[data-reading-progress]");
+    if (!article || !progressBar) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let ticking = false;
+
+    function updateProgress() {
+      const rect = article.getBoundingClientRect();
+      const articleTop = window.scrollY + rect.top;
+      const articleHeight = article.offsetHeight;
+      const viewport = window.innerHeight;
+      const start = articleTop;
+      const end = articleTop + articleHeight - viewport;
+      const range = Math.max(end - start, 1);
+      const raw = (window.scrollY - start) / range;
+      const progress = Math.min(Math.max(raw, 0), 1);
+      progressBar.style.transform = "scaleX(" + progress + ")";
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateProgress);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    updateProgress();
+
+    const copyBtn = document.querySelector("[data-copy-link]");
+    if (copyBtn) {
+      const labelEl = copyBtn.querySelector("[data-copy-label]");
+      const defaultLabel = labelEl ? labelEl.textContent : "Copiar link";
+      let resetTimer = 0;
+
+      copyBtn.addEventListener("click", function () {
+        const url = window.location.href;
+
+        function markCopied() {
+          copyBtn.classList.add("is-copied");
+          if (labelEl) labelEl.textContent = "Link copiado";
+          copyBtn.setAttribute("aria-label", "Link copiado");
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(function () {
+            copyBtn.classList.remove("is-copied");
+            if (labelEl) labelEl.textContent = defaultLabel;
+            copyBtn.setAttribute("aria-label", "Copiar link do artigo");
+          }, reduceMotion ? 1200 : 2000);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(markCopied).catch(function () {
+            window.prompt("Copie o link:", url);
+          });
+          return;
+        }
+
+        window.prompt("Copie o link:", url);
+      });
+    }
+
+    const linkedIn = document.querySelector("[data-share-linkedin]");
+    if (linkedIn) {
+      linkedIn.href =
+        "https://www.linkedin.com/sharing/share-offsite/?url=" +
+        encodeURIComponent(window.location.href);
+    }
+  })();
 })();
