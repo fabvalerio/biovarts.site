@@ -115,7 +115,7 @@
 
     /* Branco / azul claro — contraste sobre o gradient-ink (#a7bac9) */
     const lineBaseColor = "226, 236, 245";
-    const accentBlue = "186, 230, 253";
+    const accentBlue = "30, 66, 96";
 
     function handleResize() {
       const rect = footer.getBoundingClientRect();
@@ -746,14 +746,20 @@
     }
   })();
 
-  /* Spotlight hover nos cards de diferencial (segue o ponteiro) */
+  /* Spotlight hover nos cards de diferencial e detalhe de produto (segue o ponteiro) */
   const reduceMotionCards = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduceMotionCards) {
-    document.querySelectorAll(".feature-card").forEach(function (card) {
+    document.querySelectorAll(".feature-card, .product-detail").forEach(function (card) {
+      const target = card.classList.contains("product-detail")
+        ? card.querySelector(".product-detail__body") || card
+        : card;
+
       card.addEventListener("pointermove", function (e) {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty("--mx", e.clientX - rect.left + "px");
-        card.style.setProperty("--my", e.clientY - rect.top + "px");
+        const rect = target.getBoundingClientRect();
+        const mx = e.clientX - rect.left + "px";
+        const my = e.clientY - rect.top + "px";
+        card.style.setProperty("--mx", mx);
+        card.style.setProperty("--my", my);
       });
     });
   }
@@ -815,5 +821,162 @@
       const preload = new Image();
       preload.src = src;
     });
+  })();
+
+  /* Reveal ao scroll — ativa onde houver [data-reveal] */
+  (function initScrollReveal() {
+    const nodes = document.querySelectorAll("[data-reveal]");
+    if (!nodes.length) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      nodes.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+
+    nodes.forEach(function (el) {
+      io.observe(el);
+    });
+  })();
+
+  /* Blog: busca por texto e filtro por categoria */
+  (function initBlogFilters() {
+    if (active !== "blog") return;
+
+    const searchInput = document.getElementById("blog-search");
+    const filterBtns = document.querySelectorAll(".blog-filter-btn");
+    const cards = Array.prototype.slice.call(document.querySelectorAll(".blog-card"));
+    const emptyEl = document.getElementById("blog-empty");
+    if (!searchInput || !filterBtns.length || !cards.length) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const EXIT_MS = reduceMotion ? 0 : 280;
+    let activeCategory = "all";
+    const hideTimers = new WeakMap();
+
+    function normalize(text) {
+      return (text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+    }
+
+    function clearHideTimer(card) {
+      const timer = hideTimers.get(card);
+      if (timer) {
+        clearTimeout(timer);
+        hideTimers.delete(card);
+      }
+    }
+
+    function hideCard(card) {
+      if (card.classList.contains("is-hidden") && !card.classList.contains("is-exiting")) return;
+      clearHideTimer(card);
+      card.classList.remove("is-entering");
+      card.classList.add("is-exiting");
+
+      const timer = setTimeout(function () {
+        card.classList.add("is-hidden");
+        card.classList.remove("is-exiting");
+        hideTimers.delete(card);
+      }, EXIT_MS);
+      hideTimers.set(card, timer);
+    }
+
+    function showCard(card, staggerIndex) {
+      clearHideTimer(card);
+      const wasHidden = card.classList.contains("is-hidden") || card.classList.contains("is-exiting");
+      card.classList.remove("is-hidden", "is-exiting");
+
+      if (!wasHidden || reduceMotion) {
+        card.classList.remove("is-entering");
+        card.style.transitionDelay = "";
+        return;
+      }
+
+      card.classList.add("is-entering");
+      card.style.transitionDelay = staggerIndex * 45 + "ms";
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          card.classList.remove("is-entering");
+          setTimeout(function () {
+            card.style.transitionDelay = "";
+          }, 400 + staggerIndex * 45);
+        });
+      });
+    }
+
+    function setEmptyVisible(visible) {
+      if (!emptyEl) return;
+      if (visible) {
+        emptyEl.classList.remove("hidden");
+        requestAnimationFrame(function () {
+          emptyEl.classList.add("is-shown");
+        });
+      } else {
+        emptyEl.classList.remove("is-shown");
+        if (reduceMotion) {
+          emptyEl.classList.add("hidden");
+          return;
+        }
+        setTimeout(function () {
+          if (!emptyEl.classList.contains("is-shown")) {
+            emptyEl.classList.add("hidden");
+          }
+        }, 280);
+      }
+    }
+
+    function applyFilters() {
+      const query = normalize(searchInput.value);
+      let visibleCount = 0;
+      let enterIndex = 0;
+
+      cards.forEach(function (card) {
+        const category = card.getAttribute("data-category") || "";
+        const haystack = normalize(card.getAttribute("data-search") || card.textContent);
+        const matchCategory = activeCategory === "all" || category === activeCategory;
+        const matchSearch = !query || haystack.indexOf(query) !== -1;
+        const show = matchCategory && matchSearch;
+
+        if (show) {
+          showCard(card, enterIndex);
+          enterIndex += 1;
+          visibleCount += 1;
+        } else {
+          hideCard(card);
+        }
+      });
+
+      setEmptyVisible(visibleCount === 0);
+    }
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        activeCategory = btn.getAttribute("data-filter") || "all";
+        filterBtns.forEach(function (el) {
+          const isActive = el === btn;
+          el.classList.toggle("is-active", isActive);
+          el.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener("input", applyFilters);
   })();
 })();

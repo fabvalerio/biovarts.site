@@ -15,69 +15,108 @@
 <body data-page="sobre" data-base="">
   <div id="site-header"></div>
   <main>
-    <section class="ink-panel relative overflow-hidden">
+    <section class="ink-panel relative overflow-hidden page-hero">
       <div class="grid-etch absolute inset-0" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-[1240px] px-5 pb-20 pt-20 md:px-8 md:pb-28 md:pt-28">
-        <p class="eyebrow text-primary-foreground/50">Sobre a empresa</p>
-        <h1 class="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] text-primary-foreground md:text-6xl">Uma empresa de tecnologia farmacêutica — não apenas um fabricante de insumos.</h1>
-        <p class="mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/65 md:text-lg">A Biovarts é uma empresa brasileira de base tecnológica especializada no desenvolvimento de tecnologias para produção de pellets farmacêuticos e nutracêuticos, em fase de consolidação comercial após anos de desenvolvimento próprio.</p>
+      <div class="relative mx-auto max-w-[1240px] px-5 pb-20 pt-16 md:px-8 md:pb-28 md:pt-24">
+        <p class="page-hero__brand eyebrow text-primary-foreground/50" data-hero-anim>Biovarts</p>
+        <h1 class="page-hero__title mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] text-primary-foreground md:text-6xl" data-hero-anim>
+          Tecnologia farmacêutica nacional — não apenas um fabricante de insumos.
+        </h1>
+        <p class="page-hero__lead mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/65 md:text-lg" data-hero-anim>
+          Empresa brasileira de base tecnológica especializada em pellets farmacêuticos e nutracêuticos, em consolidação comercial após anos de desenvolvimento próprio.
+        </p>
+        <div class="page-hero__actions mt-9 flex flex-wrap items-center gap-3" data-hero-anim>
+          <a href="contato.html" class="inline-flex rounded-full bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90">Falar com a equipe</a>
+          <a href="produtos.html" class="inline-flex rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10">Ver produtos</a>
+        </div>
+        <p class="page-hero__meta mt-6 text-xs font-medium tracking-wide text-primary-foreground/45" data-hero-anim>
+          Empresa 100% brasileira · Ouro Verde do Oeste — Paraná
+        </p>
       </div>
     </section>
 
     <section class="mx-auto max-w-[1240px] px-5 py-24 md:px-8">
-      <div class="grid gap-14 lg:grid-cols-[1.1fr_1fr]">
-        <div>
+      <div class="grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div data-reveal>
           <div class="max-w-2xl">
             <p class="eyebrow">Propósito</p>
             <h2 class="mt-4 text-3xl font-semibold leading-tight text-foreground md:text-[2.6rem]">Reduzir a dependência de pellets importados e criar tecnologia nacional de alto valor.</h2>
           </div>
           <div class="mt-8 space-y-5 text-base leading-relaxed text-muted-foreground">
-            <p>Nosso principal diferencial é um processo próprio de produção de pellets inertes de celulose microcristalina (MCC), que proporciona elevada produtividade, excelente controle granulométrico e alta capacidade de incorporação de ingredientes ativos.</p>
-            <p>Além da fabricação de pellets inertes, atuamos em pesquisa, desenvolvimento de processos farmacêuticos, industrialização por encomenda, desenvolvimento de formulações e soluções para liberação modificada de medicamentos.</p>
-            <p>O objetivo é tornar a Biovarts referência mundial em tecnologias envolvendo pellets, e o Brasil uma referência internacional no desenvolvimento e fabricação desses sistemas.</p>
+            <p>Nosso principal diferencial é um processo próprio de produção de pellets inertes de celulose microcristalina (MCC), com elevada produtividade, controle granulométrico e alta capacidade de incorporação de ativos.</p>
+            <p>Além da fabricação de pellets inertes, atuamos em pesquisa, desenvolvimento de processos, industrialização por encomenda, formulações e soluções para liberação modificada.</p>
+            <p>O objetivo é tornar a Biovarts referência mundial em tecnologias envolvendo pellets — e o Brasil uma referência internacional nesses sistemas.</p>
           </div>
+          <a href="pesquisa-desenvolvimento.html" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-accent">
+            Conhecer o P&amp;D
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
         </div>
-        <div class="grid gap-4">
-          <img src="assets/images/lab-hands-BRNwXx_P.jpg" alt="Amostra de pellets avaliada em laboratório" width="1000" height="1000" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover" />
-          <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Equipamento de leito fluidizado em sala limpa" width="1200" height="912" loading="lazy" class="aspect-[4/3] w-full rounded-2xl object-cover" />
+        <div class="about-media" data-reveal>
+          <img
+            src="assets/images/lab-hands-BRNwXx_P.jpg"
+            alt="Amostra de pellets avaliada em laboratório"
+            width="1000"
+            height="1000"
+            loading="lazy"
+            class="about-media__primary"
+          />
+          <img
+            src="assets/images/tech-fluidbed-DB-k0coY.jpg"
+            alt="Equipamento de leito fluidizado em sala limpa"
+            width="1200"
+            height="912"
+            loading="lazy"
+            class="about-media__secondary"
+          />
         </div>
       </div>
     </section>
 
     <section class="border-y border-border bg-secondary">
-      <div class="mx-auto grid max-w-[1240px] gap-10 px-5 py-20 md:grid-cols-3 md:px-8">
-        <div>
-          <h3 class="text-xl font-semibold text-foreground">Tecnologia proprietária</h3>
-          <p class="mt-4 text-sm leading-relaxed text-muted-foreground">Processo de produção de pellets desenvolvido internamente, que elimina etapas da extrusão e esferonização convencionais.</p>
+      <div class="mx-auto max-w-[1240px] px-5 py-20 md:px-8">
+        <div class="max-w-2xl" data-reveal>
+          <p class="eyebrow">Diferenciais</p>
+          <h2 class="mt-4 text-3xl font-semibold leading-tight text-foreground md:text-[2.4rem]">O que sustenta a Biovarts</h2>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold text-foreground">Rede científica</h3>
-          <p class="mt-4 text-sm leading-relaxed text-muted-foreground">Apoio de universidades, laboratórios parceiros e especialistas de diversas áreas do setor farmacêutico.</p>
-        </div>
-        <div>
-          <h3 class="text-xl font-semibold text-foreground">Visão internacional</h3>
-          <p class="mt-4 text-sm leading-relaxed text-muted-foreground">Atuação orientada ao Brasil, América Latina, EUA e Europa, com padrão técnico compatível com o mercado global.</p>
+        <div class="mt-12 grid gap-px overflow-hidden rounded-2xl bg-border md:grid-cols-3" data-reveal>
+          <div class="feature-card bg-surface p-8">
+            <span class="feature-card__index font-mono text-xs text-accent">01</span>
+            <h3 class="mt-6 text-lg font-semibold text-foreground">Tecnologia proprietária</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Processo de produção de pellets desenvolvido internamente, que elimina etapas da extrusão e esferonização convencionais.</p>
+          </div>
+          <div class="feature-card bg-surface p-8">
+            <span class="feature-card__index font-mono text-xs text-accent">02</span>
+            <h3 class="mt-6 text-lg font-semibold text-foreground">Rede científica</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Apoio de universidades, laboratórios parceiros e especialistas de diversas áreas do setor farmacêutico.</p>
+          </div>
+          <div class="feature-card bg-surface p-8">
+            <span class="feature-card__index font-mono text-xs text-accent">03</span>
+            <h3 class="mt-6 text-lg font-semibold text-foreground">Visão internacional</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Atuação orientada ao Brasil, América Latina, EUA e Europa, com padrão técnico compatível com o mercado global.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="mx-auto max-w-[1240px] px-5 py-24 md:px-8">
-      <div class="max-w-2xl">
+      <div class="max-w-2xl" data-reveal>
         <p class="eyebrow">Público atendido</p>
         <h2 class="mt-4 text-3xl font-semibold leading-tight text-foreground md:text-[2.6rem]">Para quem desenvolvemos</h2>
         <p class="mt-5 text-base leading-relaxed text-muted-foreground">Indústrias e centros de pesquisa que precisam de fornecimento confiável, desenvolvimento conjunto, escalabilidade e suporte técnico.</p>
       </div>
-      <div class="mt-12 grid gap-px overflow-hidden rounded-2xl bg-border sm:grid-cols-2 lg:grid-cols-4">
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Indústrias farmacêuticas</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Indústrias de suplementos</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Laboratórios de controle e P&amp;D</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Farmácias de manipulação</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Centros de pesquisa</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Universidades</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Empresas de P&amp;D</div>
-        <div class="bg-surface px-7 py-8 text-sm font-medium text-foreground">Distribuidores de insumos</div>
+      <div class="audience-grid mt-12" data-reveal>
+        <a href="contato.html" class="audience-chip">Indústrias farmacêuticas</a>
+        <a href="contato.html" class="audience-chip">Indústrias de suplementos</a>
+        <a href="contato.html" class="audience-chip">Laboratórios de controle e P&amp;D</a>
+        <a href="contato.html" class="audience-chip">Farmácias de manipulação</a>
+        <a href="contato.html" class="audience-chip">Centros de pesquisa</a>
+        <a href="contato.html" class="audience-chip">Universidades</a>
+        <a href="contato.html" class="audience-chip">Empresas de P&amp;D</a>
+        <a href="contato.html" class="audience-chip">Distribuidores de insumos</a>
       </div>
     </section>
+
   </main>
   <div id="site-footer"></div>
   <script src="assets/js/main.js"></script>

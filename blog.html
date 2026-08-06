@@ -15,45 +15,84 @@
 <body data-page="blog" data-base="">
   <div id="site-header"></div>
   <main>
-    <section class="ink-panel relative overflow-hidden">
+    <section class="ink-panel relative overflow-hidden page-hero">
       <div class="grid-etch absolute inset-0" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-[1240px] px-5 pb-20 pt-20 md:px-8 md:pb-28 md:pt-28">
-        <p class="eyebrow text-primary-foreground/50">Conteúdo técnico</p>
-        <h1 class="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] text-primary-foreground md:text-6xl">Blog Biovarts</h1>
-        <p class="mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/65 md:text-lg">Notas técnicas e análises sobre pelletização, revestimento funcional e o desenvolvimento de formas multiparticuladas.</p>
+        <p class="eyebrow text-primary-foreground/50" data-hero-anim>Conteúdo técnico</p>
+        <h1 class="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] text-primary-foreground md:text-6xl" data-hero-anim>Blog Biovarts</h1>
+        <p class="mt-6 max-w-2xl text-base leading-relaxed text-primary-foreground/65 md:text-lg" data-hero-anim>Notas técnicas e análises sobre pelletização, revestimento funcional e o desenvolvimento de formas multiparticuladas.</p>
       </div>
     </section>
 
     <section class="mx-auto max-w-[1240px] px-5 py-24 md:px-8">
-      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-        <article>
+      <div class="blog-toolbar mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between" data-reveal>
+        <div class="w-full max-w-md">
+          <label for="blog-search" class="block text-sm font-medium text-foreground">Buscar artigos</label>
+          <div class="blog-search-wrap relative mt-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <input
+              id="blog-search"
+              type="search"
+              name="q"
+              autocomplete="off"
+              placeholder="Título, tema ou palavra-chave…"
+              class="w-full rounded-lg border border-input bg-surface py-3 pl-10 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-accent"
+            />
+          </div>
+        </div>
+        <div>
+          <p id="blog-filter-label" class="text-sm font-medium text-foreground">Categoria</p>
+          <div class="blog-filters mt-2 flex flex-wrap gap-2" role="group" aria-labelledby="blog-filter-label">
+            <button type="button" class="blog-filter-btn is-active" data-filter="all" aria-pressed="true">Todas</button>
+            <button type="button" class="blog-filter-btn" data-filter="tecnologia" aria-pressed="false">Tecnologia</button>
+            <button type="button" class="blog-filter-btn" data-filter="mercado" aria-pressed="false">Mercado</button>
+            <button type="button" class="blog-filter-btn" data-filter="processo" aria-pressed="false">Processo</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="blog-grid" class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <article class="blog-card" data-reveal data-category="tecnologia" data-search="tecnologia por que os pellets de mcc se tornaram o núcleo padrão das formas multiparticuladas esfericidade inércia química capacidade de carga celulose microcristalina" style="--reveal-delay: 0ms">
           <a href="blog/por-que-pellets-mcc.html" class="group block">
-            <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas" width="1000" height="700" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover" />
+            <div class="blog-card__media overflow-hidden rounded-xl">
+              <img src="assets/images/coating-abstract-3k-C1c5g.jpg" alt="Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas" width="1000" height="700" loading="lazy" class="blog-card__img w-full object-cover" />
+            </div>
             <p class="eyebrow mt-5">Tecnologia</p>
-            <h2 class="mt-3 text-lg font-medium leading-snug text-foreground group-hover:text-accent">Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas</h2>
+            <h2 class="mt-3 text-lg font-medium leading-snug text-foreground transition-colors group-hover:text-accent">Por que os pellets de MCC se tornaram o núcleo padrão das formas multiparticuladas</h2>
             <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Esfericidade, inércia química e capacidade de carga: os três atributos que explicam a adoção dos núcleos de celulose microcristalina na indústria farmacêutica.</p>
             <p class="mt-4 text-xs text-muted-foreground">22 de julho de 2026</p>
           </a>
         </article>
-        <article>
+        <article class="blog-card" data-reveal data-category="mercado" data-search="mercado dependência de importação o gargalo silencioso do desenvolvimento farmacêutico nacional prazos fornecedores customização liberação modificada produção nacional" style="--reveal-delay: 80ms">
           <a href="blog/dependencia-de-importacao.html" class="group block">
-            <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional" width="1000" height="700" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover" />
+            <div class="blog-card__media overflow-hidden rounded-xl">
+              <img src="assets/images/pellet-micrograph-DLnoky-e.jpg" alt="Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional" width="1000" height="700" loading="lazy" class="blog-card__img w-full object-cover" />
+            </div>
             <p class="eyebrow mt-5">Mercado</p>
-            <h2 class="mt-3 text-lg font-medium leading-snug text-foreground group-hover:text-accent">Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional</h2>
+            <h2 class="mt-3 text-lg font-medium leading-snug text-foreground transition-colors group-hover:text-accent">Dependência de importação: o gargalo silencioso do desenvolvimento farmacêutico nacional</h2>
             <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Prazos longos, poucos fornecedores e ausência de customização travam projetos brasileiros de liberação modificada. O que muda com produção nacional.</p>
             <p class="mt-4 text-xs text-muted-foreground">30 de junho de 2026</p>
           </a>
         </article>
-        <article>
+        <article class="blog-card" data-reveal data-category="processo" data-search="processo wurster coating os parâmetros que determinam a uniformidade de camada vazão aspersão temperatura leito tubo partição revestimento funcional" style="--reveal-delay: 160ms">
           <a href="blog/wurster-coating-parametros.html" class="group block">
-            <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Wurster coating: os parâmetros que determinam a uniformidade de camada" width="1000" height="700" loading="lazy" class="aspect-[16/10] w-full rounded-xl object-cover" />
+            <div class="blog-card__media overflow-hidden rounded-xl">
+              <img src="assets/images/tech-fluidbed-DB-k0coY.jpg" alt="Wurster coating: os parâmetros que determinam a uniformidade de camada" width="1000" height="700" loading="lazy" class="blog-card__img w-full object-cover" />
+            </div>
             <p class="eyebrow mt-5">Processo</p>
-            <h2 class="mt-3 text-lg font-medium leading-snug text-foreground group-hover:text-accent">Wurster coating: os parâmetros que determinam a uniformidade de camada</h2>
+            <h2 class="mt-3 text-lg font-medium leading-snug text-foreground transition-colors group-hover:text-accent">Wurster coating: os parâmetros que determinam a uniformidade de camada</h2>
             <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Vazão de aspersão, temperatura de leito e altura do tubo de partição definem o resultado do revestimento funcional. Uma leitura prática.</p>
             <p class="mt-4 text-xs text-muted-foreground">11 de junho de 2026</p>
           </a>
         </article>
       </div>
+
+      <p id="blog-empty" class="blog-empty mt-16 hidden text-center text-sm text-muted-foreground" role="status" aria-live="polite">
+        Nenhum artigo encontrado com os filtros selecionados.
+      </p>
     </section>
   </main>
   <div id="site-footer"></div>
